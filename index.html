@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>关西之旅 2026</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #e74c6f;
+    --primary-light: #ff6b8a;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #e9ecef;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --radius: 12px;
+    --header-h: 100px;
+    --tabs-h: 60px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100dvh;
+    position: fixed;
+    width: 100%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 12px 16px 8px;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.app-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#date-nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+}
+#date-nav::-webkit-scrollbar { display: none; }
+
+.date-btn {
+    flex-shrink: 0;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.date-btn.active {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+.date-btn:hover { background: rgba(255,255,255,0.2); }
+.date-btn.active:hover { background: var(--primary-light); }
+
+#main-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.view {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.view.active { display: flex; }
+
+.map-container {
+    height: 40%;
+    min-height: 200px;
+    position: relative;
+    z-index: 1;
+    transition: height 0.3s ease;
+}
+.map-container.fullscreen {
+    position: fixed;
+    inset: 0;
+    height: 100% !important;
+    z-index: 9999;
+}
+
+.map-expand-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-container, .info-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+}
+.card.type-attraction { border-left-color: #0984e3; }
+.card.type-food { border-left-color: #e17055; }
+.card.type-transport { border-left-color: #636e72; }
+.card.type-accommodation { border-left-color: #6c5ce7; }
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.card-time {
+    font-size: 12px;
+    color: var(--text-light);
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.card-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.card-address {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+.card-address a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.card-notes {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 6px;
+}
+
+.card-transport {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.card-transport::before {
+    content: "→";
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.card-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+#bottom-tabs {
+    display: flex;
+    background: white;
+    border-top: 1px solid var(--border);
+    padding-bottom: var(--safe-bottom);
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.tab-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.2s;
+}
+.tab-btn.active { color: var(--primary); }
+.tab-icon { font-size: 20px; }
+.tab-label { font-size: 11px; }
+
+.overview-section {
+    margin-bottom: 16px;
+}
+.overview-section h3 {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.overview-day {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.overview-day:active { transform: scale(0.98); }
+
+.overview-day-date {
+    font-size: 12px;
+    color: var(--text-light);
+    width: 50px;
+    flex-shrink: 0;
+}
+.overview-day-title {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+}
+.overview-day-count {
+    font-size: 11px;
+    color: white;
+    background: var(--primary);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.transport-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+}
+.transport-route {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.transport-detail {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+}
+.empty-state-icon { font-size: 48px; margin-bottom: 12px; }
+.empty-state-text { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header id="header">
+            <h1 class="app-title">关西之旅 2026</h1>
+            <nav id="date-nav"></nav>
+        </header>
+
+        <main id="main-content">
+            <section id="view-overview" class="view active">
+                <div id="overview-map" class="map-container">
+                    <button class="map-expand-btn" data-map="overview">⛶</button>
+                </div>
+                <div id="overview-info" class="info-panel"></div>
+            </section>
+
+            <section id="view-daily" class="view">
+                <div id="daily-map" class="map-container">
+                    <button class="map-expand-btn" data-map="daily">⛶</button>
+                </div>
+                <div id="daily-cards" class="cards-container"></div>
+            </section>
+
+            <section id="view-food" class="view">
+                <div class="cards-container" id="food-list"></div>
+            </section>
+
+            <section id="view-transport" class="view">
+                <div class="cards-container" id="transport-list"></div>
+            </section>
+        </main>
+
+        <nav id="bottom-tabs">
+            <button class="tab-btn active" data-view="overview">
+                <span class="tab-icon">📋</span>
+                <span class="tab-label">概览</span>
+            </button>
+            <button class="tab-btn" data-view="daily">
+                <span class="tab-icon">📍</span>
+                <span class="tab-label">行程</span>
+            </button>
+            <button class="tab-btn" data-view="food">
+                <span class="tab-icon">🍜</span>
+                <span class="tab-label">美食</span>
+            </button>
+            <button class="tab-btn" data-view="transport">
+                <span class="tab-icon">🚃</span>
+                <span class="tab-label">交通</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+let data = null;
+let maps = {};
+let currentDay = 0;
+let routeLines = [];
+
+const MARKER_COLORS = {
+    attraction: '#0984e3',
+    food: '#e17055',
+    transport: '#636e72',
+    accommodation: '#6c5ce7'
+};
+
+const TYPE_LABELS = {
+    attraction: '景点',
+    food: '美食',
+    transport: '交通',
+    accommodation: '住宿'
+};
+
+async function init() {
+    const resp = await fetch('data/itinerary.json');
+    data = await resp.json();
+    renderDateNav();
+    renderOverview();
+    initMaps();
+    setupTabs();
+    selectDay(0);
+}
+
+function renderDateNav() {
+    const nav = document.getElementById('date-nav');
+    nav.innerHTML = data.days.map((day, i) => {
+        const d = new Date(day.date);
+        const label = `${d.getMonth()+1}/${d.getDate()} ${['日','月','火','水','木','金','土'][d.getDay()]}`;
+        return `<button class="date-btn${i===0?' active':''}" data-index="${i}">${label}</button>`;
+    }).join('');
+    nav.addEventListener('click', e => {
+        const btn = e.target.closest('.date-btn');
+        if (!btn) return;
+        selectDay(parseInt(btn.dataset.index));
+    });
+}
+
+function selectDay(index) {
+    currentDay = index;
+    document.querySelectorAll('.date-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+    });
+    renderDailyView();
+    if (document.querySelector('.tab-btn[data-view="daily"]').classList.contains('active')) {
+        setTimeout(() => updateDailyMap(), 100);
+    }
+}
+
+function initMaps() {
+    maps.overview = L.map('overview-map', { zoomControl: false }).setView([34.9, 135.6], 9);
+    maps.daily = L.map('daily-map', { zoomControl: false }).setView([35.0, 135.7], 12);
+    const tileUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+    const attr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
+    L.tileLayer(tileUrl, { attribution: attr, maxZoom: 19, subdomains: 'abcd' }).addTo(maps.overview);
+    L.tileLayer(tileUrl, { attribution: attr, maxZoom: 19, subdomains: 'abcd' }).addTo(maps.daily);
+    renderOverviewMap();
+    setTimeout(() => {
+        maps.overview.invalidateSize();
+        maps.daily.invalidateSize();
+    }, 200);
+    setupMapExpand();
+}
+
+function setupMapExpand() {
+    document.querySelectorAll('.map-expand-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const container = btn.parentElement;
+            const isFullscreen = container.classList.toggle('fullscreen');
+            btn.textContent = isFullscreen ? '✕' : '⛶';
+            const mapKey = btn.dataset.map;
+            setTimeout(() => maps[mapKey].invalidateSize(), 100);
+        });
+    });
+}
+
+function createMarker(spot, map) {
+    const color = MARKER_COLORS[spot.type] || '#e74c6f';
+    const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="width:12px;height:12px;background:${color};border:2px solid white;border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,0.3)"></div>`,
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+    });
+    const marker = L.marker([spot.lat, spot.lng], { icon }).addTo(map);
+    let popup = `<b>${spot.name}</b><br><small>${spot.address || ''}</small>`;
+    if (spot.notes) popup += `<br><small>${spot.notes}</small>`;
+    marker.bindPopup(popup);
+    return marker;
+}
+
+function renderOverviewMap() {
+    const allSpots = data.days.flatMap(day => day.spots.filter(s => s.lat && s.lng));
+    if (allSpots.length === 0) return;
+    allSpots.forEach(spot => createMarker(spot, maps.overview));
+    data.accommodation.forEach(acc => {
+        createMarker({ ...acc, type: 'accommodation' }, maps.overview);
+    });
+    const bounds = L.latLngBounds(allSpots.map(s => [s.lat, s.lng]));
+    setTimeout(() => {
+        maps.overview.invalidateSize();
+        maps.overview.fitBounds(bounds, { padding: [30, 30] });
+    }, 300);
+}
+
+function updateDailyMap() {
+    if (!maps.daily) return;
+    routeLines.forEach(l => maps.daily.removeLayer(l));
+    routeLines = [];
+    maps.daily.eachLayer(layer => {
+        if (layer instanceof L.Marker) maps.daily.removeLayer(layer);
+    });
+    const day = data.days[currentDay];
+    const spots = day.spots.filter(s => s.lat && s.lng);
+    if (spots.length === 0) {
+        maps.daily.setView([35.0, 135.7], 10);
+        return;
+    }
+    spots.forEach(spot => createMarker(spot, maps.daily));
+    if (spots.length > 1) {
+        const line = L.polyline(
+            spots.map(s => [s.lat, s.lng]),
+            { color: '#e74c6f', weight: 3, opacity: 0.7, dashArray: '8,8' }
+        ).addTo(maps.daily);
+        routeLines.push(line);
+    }
+    const bounds = L.latLngBounds(spots.map(s => [s.lat, s.lng]));
+    maps.daily.fitBounds(bounds, { padding: [40, 40] });
+}
+
+function renderOverview() {
+    const panel = document.getElementById('overview-info');
+    const accomHtml = data.accommodation.map(a => `
+        <div class="card type-accommodation">
+            <div class="card-header"><span class="card-name">🏨 ${a.name}</span></div>
+            <div class="card-address">${a.address}</div>
+            <div class="card-notes">${a.checkIn} ~ ${a.checkOut}${a.notes ? ' · ' + a.notes : ''}</div>
+        </div>
+    `).join('');
+    const daysHtml = data.days.map((day, i) => `
+        <div class="overview-day" data-index="${i}">
+            <span class="overview-day-date">${day.date.slice(5)}</span>
+            <span class="overview-day-title">${day.title}</span>
+            ${day.spots.length ? `<span class="overview-day-count">${day.spots.length}站</span>` : ''}
+        </div>
+    `).join('');
+    panel.innerHTML = `
+        <div class="overview-section"><h3>住宿</h3>${accomHtml}</div>
+        <div class="overview-section"><h3>行程概览</h3>${daysHtml}</div>
+    `;
+    panel.addEventListener('click', e => {
+        const dayEl = e.target.closest('.overview-day');
+        if (!dayEl) return;
+        selectDay(parseInt(dayEl.dataset.index));
+        switchView('daily');
+    });
+}
+
+function renderDailyView() {
+    const day = data.days[currentDay];
+    const container = document.getElementById('daily-cards');
+    if (day.spots.length === 0) {
+        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📝</div><div class="empty-state-text">暂无行程安排<br>待补充</div></div>`;
+        return;
+    }
+    container.innerHTML = day.spots.map(spot => {
+        const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${spot.lat},${spot.lng}`;
+        let html = `<div class="card type-${spot.type}"><div class="card-header">`;
+        if (spot.time) html += `<span class="card-time">${spot.time}</span>`;
+        html += `<span class="card-name">${spot.name}</span></div>`;
+        if (spot.address) html += `<div class="card-address"><a href="${gmapUrl}" target="_blank" rel="noopener">📍 ${spot.address}</a></div>`;
+        if (spot.notes) html += `<div class="card-notes">${spot.notes}</div>`;
+        if (spot.image) html += `<img class="card-image" src="${spot.image}" alt="${spot.name}" loading="lazy">`;
+        if (spot.transport_to_next) {
+            const t = spot.transport_to_next;
+            html += `<div class="card-transport">${t.method}${t.duration ? ' · '+t.duration : ''}${t.cost ? ' · '+t.cost : ''}${t.notes ? ' · '+t.notes : ''}</div>`;
+        }
+        html += '</div>';
+        return html;
+    }).join('');
+}
+
+function renderFoodView() {
+    const container = document.getElementById('food-list');
+    const foods = data.days.flatMap(day =>
+        day.spots.filter(s => s.type === 'food').map(s => ({ ...s, date: day.date }))
+    ).concat(data.restaurants || []);
+    if (foods.length === 0) {
+        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🍜</div><div class="empty-state-text">暂无美食收藏<br>后续补充餐厅信息</div></div>`;
+        return;
+    }
+    container.innerHTML = foods.map(spot => {
+        const gmapUrl = spot.lat ? `https://www.google.com/maps/search/?api=1&query=${spot.lat},${spot.lng}` : '#';
+        let html = `<div class="card type-food"><div class="card-header"><span class="card-name">${spot.name}</span></div>`;
+        if (spot.address) html += `<div class="card-address"><a href="${gmapUrl}" target="_blank" rel="noopener">📍 ${spot.address}</a></div>`;
+        if (spot.notes) html += `<div class="card-notes">${spot.notes}</div>`;
+        if (spot.image) html += `<img class="card-image" src="${spot.image}" alt="${spot.name}" loading="lazy">`;
+        html += '</div>';
+        return html;
+    }).join('');
+}
+
+function renderTransportView() {
+    const container = document.getElementById('transport-list');
+    const transports = data.days.flatMap(day =>
+        day.spots.filter(s => s.transport_to_next).map(s => ({
+            from: s.name,
+            ...s.transport_to_next,
+            date: day.date
+        }))
+    );
+    if (transports.length === 0) {
+        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🚃</div><div class="empty-state-text">暂无交通信息</div></div>`;
+        return;
+    }
+    container.innerHTML = transports.map(t => `
+        <div class="transport-card">
+            <div class="transport-route">${t.from} → ${t.destination || '下一站'}</div>
+            <div class="transport-detail">
+                ${t.method ? '🚃 ' + t.method : ''}
+                ${t.duration ? '<br>⏱ ' + t.duration : ''}
+                ${t.cost ? '<br>💰 ' + t.cost : ''}
+                ${t.notes ? '<br>📝 ' + t.notes : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+function setupTabs() {
+    document.getElementById('bottom-tabs').addEventListener('click', e => {
+        const btn = e.target.closest('.tab-btn');
+        if (!btn) return;
+        switchView(btn.dataset.view);
+    });
+}
+
+function switchView(viewName) {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === viewName);
+    });
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(`view-${viewName}`).classList.add('active');
+    setTimeout(() => {
+        if (viewName === 'overview' && maps.overview) maps.overview.invalidateSize();
+        if (viewName === 'daily' && maps.daily) { maps.daily.invalidateSize(); updateDailyMap(); }
+        if (viewName === 'food') renderFoodView();
+        if (viewName === 'transport') renderTransportView();
+    }, 50);
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

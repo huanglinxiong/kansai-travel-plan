@@ -1,0 +1,248 @@
+{
+  "trip": {
+    "title": "关西之旅 2026",
+    "startDate": "2026-06-19",
+    "endDate": "2026-06-27",
+    "members": []
+  },
+  "accommodation": [
+    {
+      "name": "Ms Plus 四条大宫店",
+      "checkIn": "2026-06-19",
+      "checkOut": "2026-06-24",
+      "address": "京都府京都市下京区四条大宮町27",
+      "lat": 35.0016,
+      "lng": 135.7441,
+      "notes": "可退订",
+      "cancelable": true
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-06-19",
+      "title": "抵达・前往京都",
+      "spots": [
+        {
+          "name": "关西国际机场",
+          "type": "transport",
+          "time": "17:30",
+          "lat": 34.4347,
+          "lng": 135.2440,
+          "address": "大阪府泉佐野市泉州空港北1",
+          "notes": "航班抵达",
+          "image": "",
+          "transport_to_next": {
+            "method": "JR はるか (HARUKA)",
+            "duration": "约75分钟",
+            "cost": "",
+            "destination": "京都站",
+            "notes": "关西机场→京都站"
+          }
+        },
+        {
+          "name": "Ms Plus 四条大宫店",
+          "type": "accommodation",
+          "time": "19:30",
+          "lat": 35.0016,
+          "lng": 135.7441,
+          "address": "京都府京都市下京区四条大宮町27",
+          "notes": "办理入住",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-20",
+      "title": "京都・岚山",
+      "spots": [
+        {
+          "name": "岚山竹林小径",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.0173,
+          "lng": 135.6713,
+          "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町",
+          "notes": "",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "渡月桥",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.0142,
+          "lng": 135.6778,
+          "address": "京都府京都市右京区嵯峨中ノ島町",
+          "notes": "",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-21",
+      "title": "京都・三千院＆贵船",
+      "spots": [
+        {
+          "name": "三千院",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.1203,
+          "lng": 135.8347,
+          "address": "京都府京都市左京区大原来迎院町540",
+          "notes": "大原地区，青苔庭园",
+          "image": "",
+          "transport_to_next": {
+            "method": "巴士+叡山电车",
+            "duration": "约90分钟",
+            "cost": "",
+            "destination": "贵船神社",
+            "notes": "大原→出町柳→贵船口"
+          }
+        },
+        {
+          "name": "贵船神社",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.1231,
+          "lng": 135.7631,
+          "address": "京都府京都市左京区鞍馬貴船町180",
+          "notes": "水占卜、川床料理",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-22",
+      "title": "琵琶湖・旧竹林院",
+      "spots": [
+        {
+          "name": "旧竹林院",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.0747,
+          "lng": 135.8686,
+          "address": "滋贺县大津市坂本5-2-13",
+          "notes": "桌面倒影庭园",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "琵琶湖",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.2833,
+          "lng": 136.0667,
+          "address": "滋贺县",
+          "notes": "日本最大湖泊",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-23",
+      "title": "京都・宇治",
+      "spots": [
+        {
+          "name": "平等院",
+          "type": "attraction",
+          "time": "",
+          "lat": 34.8892,
+          "lng": 135.8077,
+          "address": "京都府宇治市宇治蓮華116",
+          "notes": "世界遗产，凤凰堂",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "宇治上神社",
+          "type": "attraction",
+          "time": "",
+          "lat": 34.8936,
+          "lng": 135.8122,
+          "address": "京都府宇治市宇治山田59",
+          "notes": "世界遗产",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "中村藤吉本店",
+          "type": "food",
+          "time": "",
+          "lat": 34.8908,
+          "lng": 135.8003,
+          "address": "京都府宇治市宇治壱番10",
+          "notes": "宇治抹茶甜品名店",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-24",
+      "title": "退房・移动日",
+      "spots": [
+        {
+          "name": "Ms Plus 四条大宫店",
+          "type": "transport",
+          "time": "10:00",
+          "lat": 35.0016,
+          "lng": 135.7441,
+          "address": "京都府京都市下京区四条大宮町27",
+          "notes": "退房",
+          "image": "",
+          "transport_to_next": {
+            "method": "待定",
+            "duration": "",
+            "cost": "",
+            "destination": "大阪",
+            "notes": "移动至大阪住宿（待定）"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "title": "大阪・环球影城",
+      "spots": [
+        {
+          "name": "日本环球影城 USJ",
+          "type": "attraction",
+          "time": "09:00",
+          "lat": 34.6654,
+          "lng": 135.4323,
+          "address": "大阪府大阪市此花区桜島2-1-33",
+          "notes": "建议提前购买门票和 Express Pass",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    },
+    {
+      "date": "2026-06-26",
+      "title": "大阪自由活动",
+      "spots": []
+    },
+    {
+      "date": "2026-06-27",
+      "title": "返程",
+      "spots": [
+        {
+          "name": "关西国际机场",
+          "type": "transport",
+          "time": "20:30",
+          "lat": 34.4347,
+          "lng": 135.2440,
+          "address": "大阪府泉佐野市泉州空港北1",
+          "notes": "航班出发，建议提前2-3小时到达",
+          "image": "",
+          "transport_to_next": null
+        }
+      ]
+    }
+  ],
+  "restaurants": []
+}
