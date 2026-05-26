@@ -413,9 +413,10 @@ function selectDay(index) {
         btn.classList.toggle('active', i === index);
     });
     renderDailyView();
-    if (document.querySelector('.tab-btn[data-view="daily"]').classList.contains('active')) {
-        setTimeout(() => updateDailyMap(), 100);
-    }
+    const activeView = document.querySelector('.tab-btn.active')?.dataset.view;
+    if (activeView === 'daily') setTimeout(() => updateDailyMap(), 100);
+    if (activeView === 'food') renderFoodView();
+    if (activeView === 'transport') renderTransportView();
 }
 
 function initMaps() {
@@ -553,11 +554,10 @@ function renderDailyView() {
 
 function renderFoodView() {
     const container = document.getElementById('food-list');
-    const foods = data.days.flatMap(day =>
-        day.spots.filter(s => s.type === 'food').map(s => ({ ...s, date: day.date }))
-    ).concat(data.restaurants || []);
+    const day = data.days[currentDay];
+    const foods = day.spots.filter(s => s.type === 'food');
     if (foods.length === 0) {
-        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🍜</div><div class="empty-state-text">暂无美食收藏<br>后续补充餐厅信息</div></div>`;
+        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🍜</div><div class="empty-state-text">${day.date.slice(5)} ${day.title}<br>暂无美食安排</div></div>`;
         return;
     }
     container.innerHTML = foods.map(spot => {
@@ -573,15 +573,14 @@ function renderFoodView() {
 
 function renderTransportView() {
     const container = document.getElementById('transport-list');
-    const transports = data.days.flatMap(day =>
-        day.spots.filter(s => s.transport_to_next).map(s => ({
-            from: s.name,
-            ...s.transport_to_next,
-            date: day.date
-        }))
-    );
+    const day = data.days[currentDay];
+    const transports = day.spots.filter(s => s.transport_to_next).map(s => ({
+        from: s.name,
+        ...s.transport_to_next,
+        date: day.date
+    }));
     if (transports.length === 0) {
-        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🚃</div><div class="empty-state-text">暂无交通信息</div></div>`;
+        container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🚃</div><div class="empty-state-text">${day.date.slice(5)} ${day.title}<br>暂无交通信息</div></div>`;
         return;
     }
     container.innerHTML = transports.map(t => `

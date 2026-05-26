@@ -27,7 +27,7 @@
           "type": "transport",
           "time": "17:30",
           "lat": 34.4347,
-          "lng": 135.2440,
+          "lng": 135.244,
           "address": "大阪府泉佐野市泉州空港北1",
           "notes": "航班抵达",
           "image": "",
@@ -46,37 +46,310 @@
           "lat": 35.0016,
           "lng": 135.7441,
           "address": "京都府京都市下京区四条大宮町27",
-          "notes": "办理入住",
+          "notes": "办理入住、放行李",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行（沿四条通往东）",
+            "duration": "约22分钟",
+            "cost": "",
+            "destination": "鸭川",
+            "notes": ""
+          }
+        },
+        {
+          "name": "鸭川（四条大桥）",
+          "type": "attraction",
+          "time": "19:55",
+          "lat": 35.0037,
+          "lng": 135.7710,
+          "address": "京都府京都市東山区四条大橋",
+          "notes": "河边散步，纳凉床，黄昏氛围",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "5分钟",
+            "cost": "",
+            "destination": "花见小路",
+            "notes": "继续沿四条通往东"
+          }
+        },
+        {
+          "name": "花见小路",
+          "type": "attraction",
+          "time": "20:10",
+          "lat": 35.0035,
+          "lng": 135.7745,
+          "address": "京都府京都市東山区祇園町南側",
+          "notes": "祇園花街，19:00-20:00容易偶遇艺伎/舞伎",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "8分钟",
+            "cost": "",
+            "destination": "八坂神社",
+            "notes": "沿四条通走到尽头"
+          }
+        },
+        {
+          "name": "八坂神社",
+          "type": "attraction",
+          "time": "20:30",
+          "lat": 35.0036,
+          "lng": 135.7786,
+          "address": "京都府京都市東山区祇園町北側625",
+          "notes": "24小时开放，夜间灯笼照明很美",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "12分钟",
+            "cost": "",
+            "destination": "二年坂・三年坂",
+            "notes": "穿过圆山公园往南走"
+          }
+        },
+        {
+          "name": "二年坂・三年坂",
+          "type": "attraction",
+          "time": "20:50",
+          "lat": 34.9983,
+          "lng": 135.7805,
+          "address": "京都府京都市東山区清水",
+          "notes": "商店已关，但夜晚石板路无人很有氛围，注意雨天路滑",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行至祇園巴士站→203路巴士→四条大宮",
+            "duration": "约20分钟（步行8分+巴士11分）",
+            "cost": "¥230",
+            "destination": "酒店",
+            "notes": "末班车约22:30"
+          }
         }
       ]
     },
     {
       "date": "2026-06-20",
-      "title": "京都・岚山",
+      "title": "京都・岚山（逆向游览）",
       "spots": [
+        {
+          "name": "JR马堀站",
+          "type": "transport",
+          "time": "08:50",
+          "lat": 35.0117,
+          "lng": 135.5847,
+          "address": "京都府亀岡市篠町馬堀",
+          "notes": "从京都站乘JR山阴本线约20分钟到达",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "7分钟",
+            "cost": "",
+            "destination": "小火车龟冈站",
+            "notes": ""
+          }
+        },
+        {
+          "name": "小火车龟冈站（トロッコ亀岡）",
+          "type": "attraction",
+          "time": "09:30",
+          "lat": 35.0103,
+          "lng": 135.5806,
+          "address": "京都府亀岡市篠町山本",
+          "notes": "嵯峨野观光小火车，第一班9:30发车，车程约25分钟，票价¥880",
+          "image": "",
+          "transport_to_next": {
+            "method": "嵯峨野观光小火车",
+            "duration": "25分钟",
+            "cost": "¥880",
+            "destination": "小火车嵯峨站",
+            "notes": "沿保津川溪谷行驶，风景优美"
+          }
+        },
+        {
+          "name": "小火车嵯峨站（トロッコ嵯峨）",
+          "type": "transport",
+          "time": "09:55",
+          "lat": 35.0186,
+          "lng": 135.6807,
+          "address": "京都府京都市右京区嵯峨天龍寺車道町",
+          "notes": "下车后步行7分钟至野々宮巴士站",
+          "image": "",
+          "transport_to_next": {
+            "method": "京都巴士94路（野々宮→おたぎ寺前）",
+            "duration": "约12分钟",
+            "cost": "¥230",
+            "destination": "爱宕念佛寺",
+            "notes": "班次少，约1小时一班，注意提前查时刻表"
+          }
+        },
+        {
+          "name": "爱宕念佛寺",
+          "type": "attraction",
+          "time": "10:30",
+          "lat": 35.0266,
+          "lng": 135.6617,
+          "address": "京都府京都市右京区嵯峨鳥居本深谷町2-5",
+          "notes": "1200尊表情各异的石罗汉像，游览约30分钟。门票¥300",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "11分钟",
+            "cost": "",
+            "destination": "嵯峨鸟居本",
+            "notes": ""
+          }
+        },
+        {
+          "name": "嵯峨鸟居本",
+          "type": "attraction",
+          "time": "11:15",
+          "lat": 35.0248,
+          "lng": 135.6635,
+          "address": "京都府京都市右京区嵯峨鳥居本",
+          "notes": "传统建筑保存地区，茅葺屋顶街道，拍照约15分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "8分钟",
+            "cost": "",
+            "destination": "二尊院",
+            "notes": ""
+          }
+        },
+        {
+          "name": "二尊院",
+          "type": "attraction",
+          "time": "11:40",
+          "lat": 35.0212,
+          "lng": 135.6679,
+          "address": "京都府京都市右京区嵯峨二尊院門前長神町27",
+          "notes": "「红叶马场」参道，游览约30分钟。门票¥500",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "5分钟",
+            "cost": "",
+            "destination": "常寂光寺",
+            "notes": ""
+          }
+        },
+        {
+          "name": "常寂光寺",
+          "type": "attraction",
+          "time": "12:15",
+          "lat": 35.0194,
+          "lng": 135.6688,
+          "address": "京都府京都市右京区嵯峨小倉山小倉町3",
+          "notes": "多宝塔可俯瞰岚山，游览约30-40分钟。门票¥500",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "3分钟",
+            "cost": "",
+            "destination": "御发神社",
+            "notes": ""
+          }
+        },
+        {
+          "name": "御发神社",
+          "type": "attraction",
+          "time": "13:00",
+          "lat": 35.0178,
+          "lng": 135.6706,
+          "address": "京都府京都市右京区嵯峨小倉山田淵山町10-2",
+          "notes": "日本唯一供奉头发的神社，免费参拜，10分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "2分钟",
+            "cost": "",
+            "destination": "竹林小径",
+            "notes": ""
+          }
+        },
         {
           "name": "岚山竹林小径",
           "type": "attraction",
-          "time": "",
-          "lat": 35.0173,
-          "lng": 135.6713,
-          "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町",
-          "notes": "",
+          "time": "13:15",
+          "lat": 35.0170,
+          "lng": 135.6715,
+          "address": "京都府京都市右京区嵯峨小倉山",
+          "notes": "标志性竹林隧道，步行约15-20分钟",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "3分钟",
+            "cost": "",
+            "destination": "野宫神社",
+            "notes": ""
+          }
+        },
+        {
+          "name": "野宫神社",
+          "type": "attraction",
+          "time": "13:35",
+          "lat": 35.0178,
+          "lng": 135.6742,
+          "address": "京都府京都市右京区嵯峨野宮町1",
+          "notes": "缘结・学业神社，黑木鸟居，免费，约15分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "3分钟",
+            "cost": "",
+            "destination": "天龙寺",
+            "notes": ""
+          }
+        },
+        {
+          "name": "天龙寺",
+          "type": "attraction",
+          "time": "14:00",
+          "lat": 35.0160,
+          "lng": 135.6738,
+          "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町68",
+          "notes": "世界遗产，曹源池庭园。庭园¥500，本堂另+¥300。游览约45-60分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "10分钟",
+            "cost": "",
+            "destination": "祐斎亭",
+            "notes": ""
+          }
+        },
+        {
+          "name": "祐斎亭",
+          "type": "attraction",
+          "time": "15:00",
+          "lat": 35.0138,
+          "lng": 135.6730,
+          "address": "京都府京都市右京区嵯峨亀ノ尾町6",
+          "notes": "需提前预约！桌面反射红叶/青紅葉绝景，门票¥2,000，游览约30-45分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "5分钟",
+            "cost": "",
+            "destination": "渡月桥",
+            "notes": ""
+          }
         },
         {
           "name": "渡月桥",
           "type": "attraction",
-          "time": "",
-          "lat": 35.0142,
-          "lng": 135.6778,
+          "time": "15:45",
+          "lat": 35.0128,
+          "lng": 135.6770,
           "address": "京都府京都市右京区嵯峨中ノ島町",
-          "notes": "",
+          "notes": "岚山地标，横跨桂川",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行至JR嵯峨岚山站→JR山阴本线→京都站",
+            "duration": "约25分钟（步行8分+电车17分）",
+            "cost": "¥240",
+            "destination": "京都站→酒店",
+            "notes": ""
+          }
         }
       ]
     },
@@ -116,40 +389,108 @@
     },
     {
       "date": "2026-06-22",
-      "title": "琵琶湖・旧竹林院",
+      "title": "比叡山＆旧竹林院",
       "spots": [
         {
           "name": "旧竹林院",
           "type": "attraction",
-          "time": "",
+          "time": "09:00",
           "lat": 35.0747,
           "lng": 135.8686,
           "address": "滋贺县大津市坂本5-2-13",
-          "notes": "桌面倒影庭园",
+          "notes": "桌面倒影庭园，9:00开门，游览约45分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行至坂本缆车站",
+            "duration": "约10分钟",
+            "cost": "",
+            "destination": "比叡山",
+            "notes": "坂本缆车（日本最长缆车线路，约11分钟）"
+          }
+        },
+        {
+          "name": "比叡山延暦寺",
+          "type": "attraction",
+          "time": "10:30",
+          "lat": 35.0704,
+          "lng": 135.8408,
+          "address": "滋贺县大津市坂本本町4220",
+          "notes": "世界遗产，天台宗总本山。东塔・西塔・横川三区域，建议至少游览东塔",
+          "image": "",
+          "transport_to_next": {
+            "method": "坂本缆车下山→步行至JR比叡山坂本站",
+            "duration": "约30分钟",
+            "cost": "",
+            "destination": "京都（酒店）",
+            "notes": "JR湖西线回京都约18分钟"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-06-23",
+      "title": "近江八幡",
+      "spots": [
+        {
+          "name": "八幡堀",
+          "type": "attraction",
+          "time": "",
+          "lat": 35.1283,
+          "lng": 136.0976,
+          "address": "滋贺县近江八幡市宮内町周辺",
+          "notes": "水乡古街，可乘船游览护城河",
           "image": "",
           "transport_to_next": null
         },
         {
-          "name": "琵琶湖",
+          "name": "日牟禮八幡宮",
           "type": "attraction",
           "time": "",
-          "lat": 35.2833,
-          "lng": 136.0667,
-          "address": "滋贺县",
-          "notes": "日本最大湖泊",
+          "lat": 35.1294,
+          "lng": 136.0989,
+          "address": "滋贺县近江八幡市宮内町257",
+          "notes": "",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "La Collina 近江八幡",
+          "type": "food",
+          "time": "",
+          "lat": 35.1467,
+          "lng": 136.0831,
+          "address": "滋贺县近江八幡市北之庄町615-1",
+          "notes": "たねや集团旗舰店，建筑设计独特，年轮蛋糕必买",
           "image": "",
           "transport_to_next": null
         }
       ]
     },
     {
-      "date": "2026-06-23",
-      "title": "京都・宇治",
+      "date": "2026-06-24",
+      "title": "退房→宇治→大阪",
       "spots": [
+        {
+          "name": "Ms Plus 四条大宫店",
+          "type": "transport",
+          "time": "09:00",
+          "lat": 35.0016,
+          "lng": 135.7441,
+          "address": "京都府京都市下京区四条大宮町27",
+          "notes": "退房，寄存行李于京都站coin locker",
+          "image": "",
+          "transport_to_next": {
+            "method": "JR奈良线（京都→宇治）",
+            "duration": "约17分钟",
+            "cost": "¥240",
+            "destination": "宇治",
+            "notes": "快速列车直达"
+          }
+        },
         {
           "name": "平等院",
           "type": "attraction",
-          "time": "",
+          "time": "10:00",
           "lat": 34.8892,
           "lng": 135.8077,
           "address": "京都府宇治市宇治蓮華116",
@@ -177,29 +518,12 @@
           "address": "京都府宇治市宇治壱番10",
           "notes": "宇治抹茶甜品名店",
           "image": "",
-          "transport_to_next": null
-        }
-      ]
-    },
-    {
-      "date": "2026-06-24",
-      "title": "退房・移动日",
-      "spots": [
-        {
-          "name": "Ms Plus 四条大宫店",
-          "type": "transport",
-          "time": "10:00",
-          "lat": 35.0016,
-          "lng": 135.7441,
-          "address": "京都府京都市下京区四条大宮町27",
-          "notes": "退房",
-          "image": "",
           "transport_to_next": {
-            "method": "待定",
-            "duration": "",
-            "cost": "",
-            "destination": "大阪",
-            "notes": "移动至大阪住宿（待定）"
+            "method": "京阪宇治线→中書島→京阪本线→大阪（淀屋橋/京橋）",
+            "duration": "约60分钟",
+            "cost": "约¥490",
+            "destination": "大阪（酒店待定）",
+            "notes": "京阪比JR便宜且不用绕回京都站取行李的话更方便"
           }
         }
       ]
@@ -235,7 +559,7 @@
           "type": "transport",
           "time": "20:30",
           "lat": 34.4347,
-          "lng": 135.2440,
+          "lng": 135.244,
           "address": "大阪府泉佐野市泉州空港北1",
           "notes": "航班出发，建议提前2-3小时到达",
           "image": "",
