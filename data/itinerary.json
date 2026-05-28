@@ -355,114 +355,302 @@
     },
     {
       "date": "2026-06-21",
-      "title": "京都・三千院＆贵船",
+      "title": "三千院＆比叡山＆旧竹林院",
       "spots": [
         {
-          "name": "三千院",
-          "type": "attraction",
-          "time": "",
-          "lat": 35.1203,
-          "lng": 135.8347,
-          "address": "京都府京都市左京区大原来迎院町540",
-          "notes": "大原地区，青苔庭园",
+          "name": "国际会馆站",
+          "type": "transport",
+          "time": "08:00",
+          "lat": 35.0578,
+          "lng": 135.7821,
+          "address": "京都府京都市左京区岩倉南大鷺町",
+          "notes": "从四条站乘地铁乌丸线到终点站国际会馆（约20分钟）",
           "image": "",
           "transport_to_next": {
-            "method": "巴士+叡山电车",
-            "duration": "约90分钟",
-            "cost": "",
-            "destination": "贵船神社",
-            "notes": "大原→出町柳→贵船口"
+            "method": "京都巴士19路（国際会館駅前→大原）",
+            "duration": "约25分钟",
+            "cost": "¥360",
+            "destination": "大原",
+            "notes": ""
           }
         },
         {
-          "name": "贵船神社",
+          "name": "三千院",
           "type": "attraction",
-          "time": "",
-          "lat": 35.1231,
-          "lng": 135.7631,
-          "address": "京都府京都市左京区鞍馬貴船町180",
-          "notes": "水占卜、川床料理",
+          "time": "09:00",
+          "lat": 35.1203,
+          "lng": 135.8347,
+          "address": "京都府京都市左京区大原来迎院町540",
+          "notes": "青苔庭园、往生极乐院。门票¥700，游览约45-60分钟",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "京都巴士17/19路（大原→八瀬駅前）",
+            "duration": "约15分钟",
+            "cost": "¥280",
+            "destination": "八瀬",
+            "notes": ""
+          }
+        },
+        {
+          "name": "八瀬叡山缆车",
+          "type": "transport",
+          "time": "10:30",
+          "lat": 35.0625,
+          "lng": 135.8083,
+          "address": "京都府京都市左京区八瀬野瀬町",
+          "notes": "叡山缆车（9分钟）+叡山索道（3分钟）到达山顶",
+          "image": "",
+          "transport_to_next": {
+            "method": "叡山缆车+索道",
+            "duration": "约15分钟",
+            "cost": "约¥850（单程）",
+            "destination": "比叡山顶",
+            "notes": "每30分钟一班"
+          }
+        },
+        {
+          "name": "比叡山顶展望台",
+          "type": "attraction",
+          "time": "11:00",
+          "lat": 35.0650,
+          "lng": 135.8300,
+          "address": "滋贺县大津市比叡山頂",
+          "notes": "可眺望琵琶湖全景",
+          "image": "",
+          "transport_to_next": {
+            "method": "山内穿梭巴士/步行",
+            "duration": "约10分钟",
+            "cost": "",
+            "destination": "延历寺东塔",
+            "notes": ""
+          }
+        },
+        {
+          "name": "比叡山延暦寺（东塔）",
+          "type": "attraction",
+          "time": "11:30",
+          "lat": 35.0704,
+          "lng": 135.8408,
+          "address": "滋贺县大津市坂本本町4220",
+          "notes": "世界遗产，天台宗总本山。门票¥1,000（含三区域）。根本中堂修缮中但可参拜。游览约1小时",
+          "image": "",
+          "transport_to_next": {
+            "method": "坂本缆车（东侧下山）",
+            "duration": "11分钟",
+            "cost": "¥490",
+            "destination": "坂本缆车站",
+            "notes": "日本最长缆车（2,025m），顶站紧邻东塔区域"
+          }
+        },
+        {
+          "name": "旧竹林院",
+          "type": "attraction",
+          "time": "13:15",
+          "lat": 35.0747,
+          "lng": 135.8686,
+          "address": "滋贺县大津市坂本5-2-13",
+          "notes": "桌面倒影庭园，门票¥330，游览约45分钟。周一休馆",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行至JR比叡山坂本站→JR湖西线→京都站",
+            "duration": "约40分钟（步行20分+电车18分）",
+            "cost": "¥330",
+            "destination": "京都（酒店）",
+            "notes": "新快速停靠比叡山坂本站"
+          }
         }
       ]
     },
     {
       "date": "2026-06-22",
-      "title": "比叡山＆旧竹林院",
+      "title": "琵琶湖Valley＆近江舞子",
       "spots": [
         {
-          "name": "旧竹林院",
-          "type": "attraction",
-          "time": "09:00",
-          "lat": 35.0747,
-          "lng": 135.8686,
-          "address": "滋贺县大津市坂本5-2-13",
-          "notes": "桌面倒影庭园，9:00开门，游览约45分钟",
+          "name": "JR志贺站",
+          "type": "transport",
+          "time": "08:30",
+          "lat": 35.1583,
+          "lng": 135.9375,
+          "address": "滋贺县大津市木戸",
+          "notes": "从京都站乘JR湖西线普通列车约40分钟，¥590。注意只有普通列车停靠",
           "image": "",
           "transport_to_next": {
-            "method": "步行至坂本缆车站",
+            "method": "巴士（志賀駅→びわ湖バレイ前）",
             "duration": "约10分钟",
             "cost": "",
-            "destination": "比叡山",
-            "notes": "坂本缆车（日本最长缆车线路，约11分钟）"
+            "destination": "琵琶湖Valley缆车站",
+            "notes": "班次约1小时一班，注意查时刻表"
           }
         },
         {
-          "name": "比叡山延暦寺",
+          "name": "琵琶湖Valley（びわ湖バレイ）",
+          "type": "attraction",
+          "time": "09:30",
+          "lat": 35.2147,
+          "lng": 135.9036,
+          "address": "滋贺县大津市木戸1547-1",
+          "notes": "缆车上山（5分钟），山顶海拔1,100m。设施通票网上提前购买¥3,500-4,500（现场¥5,000）",
+          "image": "",
+          "transport_to_next": null
+        },
+        {
+          "name": "Zipline Adventure",
           "type": "attraction",
           "time": "10:30",
-          "lat": 35.0704,
-          "lng": 135.8408,
-          "address": "滋贺县大津市坂本本町4220",
-          "notes": "世界遗产，天台宗总本山。东塔・西塔・横川三区域，建议至少游览东塔",
+          "lat": 35.2147,
+          "lng": 135.9036,
+          "address": "琵琶湖Valley山顶",
+          "notes": "Tour Course（6条线路，约2小时）¥5,000需前一天网上预约；One Flight（单条169m，约20分钟）¥3,000现场报名。体重限制30-100kg",
           "image": "",
           "transport_to_next": {
-            "method": "坂本缆车下山→步行至JR比叡山坂本站",
+            "method": "缆车下山→巴士回志贺站→JR一站到近江舞子站",
             "duration": "约30分钟",
-            "cost": "",
+            "cost": "¥200",
+            "destination": "近江舞子海滩",
+            "notes": "近江舞子站是志贺站南边一站"
+          }
+        },
+        {
+          "name": "近江舞子海滩",
+          "type": "attraction",
+          "time": "14:30",
+          "lat": 35.1450,
+          "lng": 135.9400,
+          "address": "滋贺县大津市南小松",
+          "notes": "4km白沙松林海滩，琵琶湖畔散步。从近江舞子站步行6分钟到达",
+          "image": "",
+          "transport_to_next": {
+            "method": "JR近江舞子站→JR湖西线→京都站",
+            "duration": "约35分钟",
+            "cost": "¥510",
             "destination": "京都（酒店）",
-            "notes": "JR湖西线回京都约18分钟"
+            "notes": "近江舞子有新快速停靠，回程较快"
           }
         }
       ]
     },
     {
       "date": "2026-06-23",
-      "title": "近江八幡",
+      "title": "近江八幡＆八幡山",
       "spots": [
         {
-          "name": "八幡堀",
-          "type": "attraction",
-          "time": "",
-          "lat": 35.1283,
-          "lng": 136.0976,
-          "address": "滋贺县近江八幡市宮内町周辺",
-          "notes": "水乡古街，可乘船游览护城河",
+          "name": "JR近江八幡站",
+          "type": "transport",
+          "time": "09:00",
+          "lat": 35.1286,
+          "lng": 136.0747,
+          "address": "滋贺县近江八幡市鷹飼町",
+          "notes": "从京都站乘JR新快速约35分钟，¥680",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "近江铁道巴士（長命寺方面）→大杉町下车，或步行",
+            "duration": "巴士7分钟 / 步行约25分钟",
+            "cost": "¥220",
+            "destination": "八幡山缆车",
+            "notes": "步行沿仲屋町通可顺路逛旧市街"
+          }
+        },
+        {
+          "name": "八幡山缆车",
+          "type": "attraction",
+          "time": "09:45",
+          "lat": 35.1310,
+          "lng": 136.0990,
+          "address": "滋贺县近江八幡市宮内町",
+          "notes": "缆车4分钟到山顶，往返¥890。每15分钟一班，9:00-17:00运行",
+          "image": "",
+          "transport_to_next": {
+            "method": "缆车上山",
+            "duration": "4分钟",
+            "cost": "¥890（往返）",
+            "destination": "八幡山山顶",
+            "notes": ""
+          }
+        },
+        {
+          "name": "八幡山山顶",
+          "type": "attraction",
+          "time": "10:00",
+          "lat": 35.1330,
+          "lng": 136.1010,
+          "address": "滋贺县近江八幡市宮内町八幡山",
+          "notes": "八幡山城遗址（丰臣秀次筑城1585年）、瑞龙寺、琵琶湖展望台。游览约40-60分钟",
+          "image": "",
+          "transport_to_next": {
+            "method": "缆车下山",
+            "duration": "4分钟",
+            "cost": "",
+            "destination": "日牟禮八幡宮",
+            "notes": "缆车站旁即是神社"
+          }
         },
         {
           "name": "日牟禮八幡宮",
           "type": "attraction",
-          "time": "",
+          "time": "11:00",
           "lat": 35.1294,
           "lng": 136.0989,
           "address": "滋贺县近江八幡市宮内町257",
-          "notes": "",
+          "notes": "近江八幡总�的守护神社，免费参拜，约15分钟",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "3分钟",
+            "cost": "",
+            "destination": "八幡堀",
+            "notes": "神社旁即是八幡堀"
+          }
+        },
+        {
+          "name": "八幡堀（游船）",
+          "type": "attraction",
+          "time": "11:20",
+          "lat": 35.1283,
+          "lng": 136.0976,
+          "address": "滋贺县近江八幡市宮内町周辺",
+          "notes": "水乡护城河游船，约30分钟，¥1,000/人，无需预约。10:00-16:00运行。榻榻米船有顶棚（雨天也可）",
+          "image": "",
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "5分钟",
+            "cost": "",
+            "destination": "新町通り旧市街",
+            "notes": ""
+          }
+        },
+        {
+          "name": "新町通り（近江商人街道）",
+          "type": "attraction",
+          "time": "12:00",
+          "lat": 35.1270,
+          "lng": 136.0960,
+          "address": "滋贺县近江八幡市新町",
+          "notes": "江户时代近江商人宅邸群，白壁土藏街道。可顺路午餐",
+          "image": "",
+          "transport_to_next": {
+            "method": "巴士或出租车",
+            "duration": "巴士约10分钟 / 出租车5分钟",
+            "cost": "出租车约¥1,000",
+            "destination": "La Collina",
+            "notes": "从旧市街步行到La Collina约20-25分钟，也可选择走路"
+          }
         },
         {
           "name": "La Collina 近江八幡",
           "type": "food",
-          "time": "",
+          "time": "13:30",
           "lat": 35.1467,
           "lng": 136.0831,
           "address": "滋贺县近江八幡市北之庄町615-1",
-          "notes": "たねや集团旗舰店，建筑设计独特，年轮蛋糕必买",
+          "notes": "たねや集团旗舰店。藤森照信设计的草屋顶建筑，现烤年轮蛋糕必买。9:00-18:00营业，免费入场",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "巴士回JR近江八幡站→JR新快速→京都站",
+            "duration": "约50分钟（巴士10分+电车35分）",
+            "cost": "¥680",
+            "destination": "京都（酒店）",
+            "notes": "La Collina门口有巴士站回JR站"
+          }
         }
       ]
     },
