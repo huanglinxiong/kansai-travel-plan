@@ -15,6 +15,16 @@
       "lng": 135.7441,
       "notes": "可退订",
       "cancelable": true
+    },
+    {
+      "name": "相铁FRESA INN 北浜",
+      "checkIn": "2026-06-24",
+      "checkOut": "2026-06-27",
+      "address": "大阪府大阪市中央区高麗橋2-4-10",
+      "lat": 34.6920,
+      "lng": 135.5070,
+      "notes": "京阪北浜站6号出口步行2分钟。仅支持无现金支付",
+      "cancelable": false
     }
   ],
   "days": [
@@ -656,7 +666,7 @@
     },
     {
       "date": "2026-06-24",
-      "title": "退房→宇治→大阪",
+      "title": "退房→宇治→大阪入住",
       "spots": [
         {
           "name": "Ms Plus 四条大宫店",
@@ -665,14 +675,14 @@
           "lat": 35.0016,
           "lng": 135.7441,
           "address": "京都府京都市下京区四条大宮町27",
-          "notes": "退房，寄存行李于京都站coin locker",
+          "notes": "退房，带行李出发",
           "image": "",
           "transport_to_next": {
-            "method": "JR奈良线（京都→宇治）",
-            "duration": "约17分钟",
-            "cost": "¥240",
+            "method": "阪急大宮站→乌丸站→地铁乌丸线→竹田站→京阪宇治线→宇治站",
+            "duration": "约45分钟",
+            "cost": "约¥460",
             "destination": "宇治",
-            "notes": "快速列车直达"
+            "notes": "或者先到京都站寄存行李再轻装去宇治（JR奈良线17分¥240）"
           }
         },
         {
@@ -682,37 +692,60 @@
           "lat": 34.8892,
           "lng": 135.8077,
           "address": "京都府宇治市宇治蓮華116",
-          "notes": "世界遗产，凤凰堂",
+          "notes": "世界遗产，凤凰堂。门票¥700，游览约45-60分钟",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "10分钟",
+            "cost": "",
+            "destination": "宇治上神社",
+            "notes": "过宇治川朝日桥"
+          }
         },
         {
           "name": "宇治上神社",
           "type": "attraction",
-          "time": "",
+          "time": "11:00",
           "lat": 34.8936,
           "lng": 135.8122,
           "address": "京都府宇治市宇治山田59",
-          "notes": "世界遗产",
+          "notes": "世界遗产，日本最古老神社建筑。免费，约20分钟",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "步行",
+            "duration": "8分钟",
+            "cost": "",
+            "destination": "中村藤吉本店",
+            "notes": ""
+          }
         },
         {
           "name": "中村藤吉本店",
           "type": "food",
-          "time": "",
+          "time": "11:30",
           "lat": 34.8908,
           "lng": 135.8003,
           "address": "京都府宇治市宇治壱番10",
-          "notes": "宇治抹茶甜品名店",
+          "notes": "宇治抹茶甜品名店，午餐/甜品。可能需要排队",
           "image": "",
           "transport_to_next": {
-            "method": "京阪宇治线→中書島→京阪本线→大阪（淀屋橋/京橋）",
-            "duration": "约60分钟",
-            "cost": "约¥490",
-            "destination": "大阪（酒店待定）",
-            "notes": "京阪比JR便宜且不用绕回京都站取行李的话更方便"
+            "method": "京阪宇治站→中書島换乘→京阪本线→北浜站",
+            "duration": "约55分钟",
+            "cost": "约¥470",
+            "destination": "相铁FRESA INN北浜",
+            "notes": "京阪北浜站6号出口步行2分钟到酒店。直达无需换乘JR"
           }
+        },
+        {
+          "name": "相铁FRESA INN 北浜",
+          "type": "accommodation",
+          "time": "15:00",
+          "lat": 34.6920,
+          "lng": 135.5070,
+          "address": "大阪府大阪市中央区高麗橋2-4-10",
+          "notes": "入住（15:00起）。京阪北浜站6号出口步行2分钟",
+          "image": "",
+          "transport_to_next": null
         }
       ]
     },
@@ -721,15 +754,38 @@
       "title": "大阪・环球影城",
       "spots": [
         {
+          "name": "京阪北浜站",
+          "type": "transport",
+          "time": "07:50",
+          "lat": 34.6916,
+          "lng": 135.5066,
+          "address": "大阪府大阪市中央区北浜",
+          "notes": "酒店步行2分钟到站",
+          "image": "",
+          "transport_to_next": {
+            "method": "京阪本线→京橋站→换乘JR大阪环状线→西九条→JR梦咲线→ユニバーサルシティ",
+            "duration": "约30分钟",
+            "cost": "约¥340（京阪¥160+JR¥180）",
+            "destination": "环球影城",
+            "notes": "京橋站京阪→JR换乘很方便，跟着标识走"
+          }
+        },
+        {
           "name": "日本环球影城 USJ",
           "type": "attraction",
-          "time": "09:00",
+          "time": "08:30",
           "lat": 34.6654,
           "lng": 135.4323,
           "address": "大阪府大阪市此花区桜島2-1-33",
-          "notes": "建议提前购买门票和 Express Pass",
+          "notes": "建议提前购买门票和Express Pass。开园前到达排队入场。园内全天游玩",
           "image": "",
-          "transport_to_next": null
+          "transport_to_next": {
+            "method": "JR梦咲线→西九条→JR大阪环状线→京橋→京阪本线→北浜",
+            "duration": "约30分钟",
+            "cost": "约¥340",
+            "destination": "酒店",
+            "notes": "去程原路返回。JR末班车约23:30，时间充裕"
+          }
         }
       ]
     },
